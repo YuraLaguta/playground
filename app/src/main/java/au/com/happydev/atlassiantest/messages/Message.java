@@ -27,8 +27,7 @@ public class Message {
             for (String part : parts) {
                 if (part.startsWith(MENTION_PREFIX) && part.length() > 1) {
                     message.getMentions().add(part.substring(1));
-                } else if (part.startsWith("(") && part.endsWith(")")) {
-                   /*TODO replace to regexp*/
+                } else if (part.matches("\\([a-zA-Z0-9]{1,15}\\)")) {
                     message.getEmoticons().add(part.substring(1, part.length() - 1));
                 }
             }

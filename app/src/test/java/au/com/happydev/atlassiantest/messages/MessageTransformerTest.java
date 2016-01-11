@@ -37,6 +37,17 @@ public class MessageTransformerTest {
     }
 
     @Test
+    public void emoicons_edge_case_isCorrect() throws Exception {
+        assertEquals(MessageTransformerProvider.getMessageTransformer().toJson("Good morning! () (@coffee) (a) (applePearPeach) (watermelonappleN) "),
+                "{\n" +
+                        "  \"emoticons\": [\n" +
+                        "    \"a\",\n" +
+                        "    \"applePearPeach\"\n" +
+                        "  ]\n" +
+                        "}");
+    }
+
+    @Test
     public void linksWithTitle_isCorrect() throws Exception {
         assertEquals(MessageTransformerProvider.getMessageTransformer().toJson("Olympics are starting soon; http://www.nbcolympics.com"),
                 "");
