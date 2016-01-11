@@ -16,12 +16,20 @@ public class Message {
     @Expose
     private List<String> mMentions;
 
+    @SerializedName("emoticons")
+    @Expose
+    private List<String> mEmoticons;
+
+
     public Message(String message) {
-        if (message.contains("@")) {
+        if (message.contains("@") || (message.contains("(") && message.contains(")"))) {
             String[] parts = message.split(" ");
             for (String part : parts) {
                if (part.startsWith(MENTION_PREFIX) && part.length() > 1) {
                    getMentions().add(part.substring(1));
+               } else if (part.startsWith("(") && part.endsWith(")")) {
+                   /*TODO replace to regexp*/
+                   getEmoticons().add(part.substring(1, part.length() - 1));
                }
             }
         }
@@ -33,6 +41,15 @@ public class Message {
         }
         return mMentions;
     }
+
+    private List<String> getEmoticons() {
+        if (mEmoticons == null) {
+            mEmoticons = new LinkedList<>();
+        }
+        return mEmoticons;
+    }
+
+
 
 
 }
