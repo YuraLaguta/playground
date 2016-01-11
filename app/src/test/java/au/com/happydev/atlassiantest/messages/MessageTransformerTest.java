@@ -20,6 +20,13 @@ public class MessageTransformerTest {
     }
 
     @Test
+    public void mentions_edge_case_isCorrect() throws Exception {
+        assertEquals(MessageTransformerProvider.getMessageTransformer().toJson("@ you around?"),
+                "{\n" +
+                        "}");
+    }
+
+    @Test
     public void emoicons_isCorrect() throws Exception {
         assertEquals(MessageTransformerProvider.getMessageTransformer().toJson("Good morning! (megusta) (coffee)"),
                 "{\n" +
