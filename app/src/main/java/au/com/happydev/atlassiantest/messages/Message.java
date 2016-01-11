@@ -20,19 +20,20 @@ public class Message {
     @Expose
     private List<String> mEmoticons;
 
-
-    public Message(String message) {
-        if (message.contains("@") || (message.contains("(") && message.contains(")"))) {
-            String[] parts = message.split(" ");
+    public static Message createMessage(String msgContent) {
+        Message message = new Message();
+        if (msgContent.contains("@") || (msgContent.contains("(") && msgContent.contains(")"))) {
+            String[] parts = msgContent.split(" ");
             for (String part : parts) {
-               if (part.startsWith(MENTION_PREFIX) && part.length() > 1) {
-                   getMentions().add(part.substring(1));
-               } else if (part.startsWith("(") && part.endsWith(")")) {
+                if (part.startsWith(MENTION_PREFIX) && part.length() > 1) {
+                    message.getMentions().add(part.substring(1));
+                } else if (part.startsWith("(") && part.endsWith(")")) {
                    /*TODO replace to regexp*/
-                   getEmoticons().add(part.substring(1, part.length() - 1));
-               }
+                    message.getEmoticons().add(part.substring(1, part.length() - 1));
+                }
             }
         }
+        return message;
     }
 
     private List<String> getMentions() {
