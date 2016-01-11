@@ -20,7 +20,7 @@ public class Message {
         if (message.contains("@")) {
             String[] parts = message.split(" ");
             for (String part : parts) {
-               if (part.startsWith(MENTION_PREFIX)) {
+               if (part.startsWith(MENTION_PREFIX) && part.length() > 1) {
                    getMentions().add(part.substring(1));
                }
             }
