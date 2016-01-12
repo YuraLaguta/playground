@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AtlassianTest</string>
+    <string name="transformation_transform_btn">Transform</string>
+    <string name="default_test_msg">Please mention to the @Matt that @Yura (love) (reading) http://www.androidweekly.net</string>
 </resources>
