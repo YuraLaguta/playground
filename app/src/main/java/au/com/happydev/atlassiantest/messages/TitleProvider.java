@@ -33,10 +33,10 @@ public class TitleProvider {
                 url = new URL(link);
             }
             URLConnection urlConnection = url.openConnection();
-
             BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
             String line;
-            boolean isTitleTagOpened;
+            boolean isTitleTagOpened = false;
+            boolean isTitleTagClosed = false;
             StringBuilder titleSb = new StringBuilder();
             while ((line = in.readLine()) != null) {
                 int indexOfOpen = line.indexOf(TITLE_OPEN_TAG);
@@ -44,13 +44,27 @@ public class TitleProvider {
                     int indexOfClose = line.indexOf(TITLE_CLOSE_TAG);
                     if (indexOfClose != -1) {
                         titleSb.append(line.substring(indexOfOpen + TITLE_OPEN_TAG.length(), indexOfClose));
+                        isTitleTagClosed = true;
+                        break;
                     } else {
                         isTitleTagOpened = true;
+                        titleSb.append(line.substring(indexOfOpen + TITLE_OPEN_TAG.length()));
                     }
                 }
+                if (isTitleTagOpened && indexOfOpen == -1) {
+                    int indexOfClose = line.indexOf(TITLE_CLOSE_TAG);
+                    if (indexOfClose != -1) {
+                        titleSb.append(line.substring(0, indexOfClose));
+                        isTitleTagClosed = true;
+                        break;
+                    } else {
+                        titleSb.append(line);
+                    }
+                }
+
             }
             in.close();
-            return titleSb.toString();
+            return isTitleTagClosed ? titleSb.toString() : "";
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e);
             return "";

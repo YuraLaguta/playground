@@ -11,7 +11,7 @@ public class MessageTransformerProvider {
 
     public static MessageTransformer getMessageTransformer() {
         if (sMessageTransformer == null) {
-            sMessageTransformer = new MessageTransformer(new GsonBuilder().setPrettyPrinting().create());
+            sMessageTransformer = new MessageTransformer(new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create());
         }
         return sMessageTransformer;
     }
