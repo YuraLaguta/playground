@@ -16,4 +16,8 @@ public class MessageTransformer {
     public String toJson(String message) {
         return mGson.toJson(Message.createMessage(message));
     }
+
+    public String toJson(Message message) {
+        return mGson.toJson(message);
+    }
 }

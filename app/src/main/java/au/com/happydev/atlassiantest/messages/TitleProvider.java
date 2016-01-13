@@ -1,5 +1,6 @@
 package au.com.happydev.atlassiantest.messages;
 
+import android.support.annotation.WorkerThread;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -25,6 +26,7 @@ public class TitleProvider {
         return sInstance;
     }
 
+    @WorkerThread
     public String getTitle(String link) {
 
         try {

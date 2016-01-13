@@ -11,10 +11,12 @@
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin_medium"
         android:layout_weight="1"
+        android:freezesText="true"
         tools:text="This is text that is contained in this "/>
 
 
     <EditText
+        android:id="@+id/transformation_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/default_test_msg"/>

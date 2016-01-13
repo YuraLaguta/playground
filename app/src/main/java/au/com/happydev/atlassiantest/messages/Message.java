@@ -14,6 +14,7 @@ public class Message {
     public static final String MENTION_PREFIX = "@";
     public static final String PATTERN_EMOTICON = "\\([a-zA-Z0-9]{1,15}\\)";
     public static final String PATTERN_LINK = "^(?i)(https?)://.*";
+    public static final String KEY_MESSAGE = "key_message";
 
     @SerializedName("mentions")
     @Expose
