@@ -1,8 +1,6 @@
-package au.com.happydev.atlassiantest;
+package au.com.happydev.atlassiantest.core;
 
 import com.squareup.otto.Bus;
-
-import au.com.happydev.atlassiantest.core.MainThreadBus;
 
 /**
  * Created by laguta.yurii@gmail.com on 13/01/16.

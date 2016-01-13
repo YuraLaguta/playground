@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.IntentService;
 import android.content.Intent;
 
-import au.com.happydev.atlassiantest.BusProvider;
+import au.com.happydev.atlassiantest.core.BusProvider;
 
 /**
  * Created by laguta.yurii@gmail.com on 13/01/16.

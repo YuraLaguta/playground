@@ -138,7 +138,7 @@ public class MessageTransformerTest {
                         "  \"links\": [\n" +
                         "    {\n" +
                         "      \"url\": \"https://goo.gl\",\n" +
-                        "      \"title\": \"Different Lines Title Tag\"\n" +
+                        "      \"title\": \"Different    Lines    Title    Tag\"\n" +
                         "    }\n" +
                         "  ]\n" +
                         "}");

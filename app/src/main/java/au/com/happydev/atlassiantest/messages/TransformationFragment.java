@@ -19,7 +19,7 @@ import com.squareup.otto.Subscribe;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import au.com.happydev.atlassiantest.BusProvider;
+import au.com.happydev.atlassiantest.core.BusProvider;
 import au.com.happydev.atlassiantest.R;
 import au.com.happydev.atlassiantest.core.ErrorEvent;
 import butterknife.Bind;

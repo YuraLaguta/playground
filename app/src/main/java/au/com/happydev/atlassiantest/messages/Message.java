@@ -1,5 +1,7 @@
 package au.com.happydev.atlassiantest.messages;
 
+import android.support.annotation.WorkerThread;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -28,9 +30,10 @@ public class Message {
     @Expose
     private List<Link> mLinks;
 
+    @WorkerThread
     public static Message createMessage(String msgContent) {
         Message message = new Message();
-        if (msgContent.contains("@") || (msgContent.contains("(") && msgContent.contains(")")) || msgContent.contains("http")) {
+        if (msgContent.contains(MENTION_PREFIX) || (msgContent.contains("(") && msgContent.contains(")")) || msgContent.contains("http")) {
             String[] parts = msgContent.split(" ");
             for (String part : parts) {
                 if (part.startsWith(MENTION_PREFIX) && part.length() > 1) {
